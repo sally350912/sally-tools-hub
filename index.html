@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>莎莉 AI 工具室 — 為業務打造的安靜超能力</title>
+<meta name="description" content="為保險、房仲、電信業務打造的 AI 工具室。每個工具都從真實銷售現場長出來，打開瀏覽器就能用，不用安裝、不收集資料。">
+<meta property="og:title" content="莎莉 AI 工具室">
+<meta property="og:description" content="把 AI 變成你的安靜超能力，而不是另一份工作。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">台東女子<em>｜莎莉北漂中</em></a>
+  <ul>
+    <li><a class="lk" href="#tools">工具室</a></li>
+    <li><a class="lk" href="https://www.instagram.com/sally.sales.ttt" target="_blank" rel="noopener">關於莎莉</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <canvas id="silk"></canvas>
+  <div class="hero-content">
+    <div class="hero-label">莎莉的 AI 工作聰明術</div>
+    <h1>讓 AI 成為你的<br><span class="it" style="font-family:var(--brush);font-style:normal">隱形工作夥伴</span>，<br>而不是另一份工作。</h1>
+    <p>我把過去在業務現場累積的經驗，加上實際使用過、真的能改善工作流程的 AI 指令，整理成一套可以直接上手的工具。<br><br>這裡不追求複雜，也不為了 AI 而 AI——只保留那些能幫你寫文案、整理客戶、準備話術、提升效率的實用方法。<br><br>希望 AI 對你來說，不是另一份需要追趕的工作，而是一種安靜、順手、可靠的工作超能力。</p>
+    <div class="hero-cta">
+      <a class="btn" href="#tools">進入工具室</a>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+  <div class="hero-hint">移動滑鼠，撥動光的水面<span class="line"></span></div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>DM Prompt 產生器</span><span>業務生圖</span><span>Q 版角色</span><span>接案報價</span><span>貼文字數</span><span>Canva 一條龍</span><span>DM Prompt 產生器</span><span>業務生圖</span><span>Q 版角色</span><span>接案報價</span><span>貼文字數</span><span>Canva 一條龍</span>
+  </div>
+</div>
+
+<section class="tools" id="tools">
+  <div class="sec-head">
+    <div><div class="idx">TOOLS — 工具室藏品</div><h2>挑一件，今天就用得上</h2></div>
+    <p>每件工具都在你的瀏覽器裡跑，不上傳、不收集資料。AI 類只幫你把 prompt 寫好，貼進你慣用的 ChatGPT／Claude 即可。</p>
+  </div>
+
+  <div class="cat-label">文案內容</div>
+  <div class="tool-list">
+    <a class="tool" href="tools/word-count.html"><span class="no">No.01</span><div><h3>貼文字數檢查器</h3><div class="desc">即時對照 Threads／IG／X／LINE 字數上限，超出立刻變紅。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="tools/chibi-maker.html"><span class="no">No.02</span><div><h3>Q 版角色生圖產生器</h3><div class="desc">鎖一次外觀，選服裝／場景／表情，產出永遠同一個角色的生圖 prompt。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="https://sally-ig-cards.vercel.app" target="_blank" rel="noopener"><span class="no">No.03</span><div><h3>IG 圖卡排版器<span class="ext">另開分頁</span></h3><div class="desc">輸入文字選模板，一鍵排出 IG 輪播圖卡，免開 Canva。</div></div><span class="arrow">→</span></a>
+  </div>
+
+  <div class="cat-label">接案報價</div>
+  <div class="tool-list">
+    <a class="tool" href="tools/quote-calc.html"><span class="no">No.04</span><div><h3>接案報價計算器</h3><div class="desc">填項目與工時自動算總價，產出可複製的報價說明。</div></div><span class="arrow">→</span></a>
+  </div>
+
+  <div class="cat-label">業務 × 客服</div>
+  <div class="tool-list">
+    <a class="tool" href="tools/dm-builder.html"><span class="no">No.05</span><div><h3>業務 DM Prompt 產生器</h3><div class="desc">選行業×DM 類型，自動注入法規地雷，產出開發／銷售／節慶／回訪／轉介 DM。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="tools/image-builder.html"><span class="no">No.06</span><div><h3>業務生圖 Prompt 產生器</h3><div class="desc">選行業×圖類型，自動注入版權地雷，產出商用安全的生圖 prompt。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="tools/canva-sop.html"><span class="no">No.07</span><div><h3>Canva 業務一條龍</h3><div class="desc">從 AI 生圖 → Canva 加字 → LINE／FB／IG 發送的 5 步驟＋尺寸表＋雷區。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="https://dev-letter-tool.vercel.app" target="_blank" rel="noopener"><span class="no">No.08</span><div><h3>業務開發信產生器<span class="ext">另開分頁</span></h3><div class="desc">填幾個欄位產出專業開發信，附可下載的 Word 模板。</div></div><span class="arrow">→</span></a>
+  </div>
+
+  <div class="cat-label">自我檢測</div>
+  <div class="tool-list">
+    <a class="tool" href="https://sally-biz-ai.vercel.app" target="_blank" rel="noopener"><span class="no">No.09</span><div><h3>工作幸福值測驗<span class="ext">另開分頁</span></h3><div class="desc">12 題、4 個面向，測測你現在的工作幸福值落在哪。</div></div><span class="arrow">→</span></a>
+    <a class="tool" href="https://sally-ai-check.vercel.app" target="_blank" rel="noopener"><span class="no">No.10</span><div><h3>AI 力健檢問卷<span class="ext">另開分頁</span></h3><div class="desc">盤點你的 AI 應用力，找出 3 個最值得深聊、最能變現的點。</div></div><span class="arrow">→</span></a>
+  </div>
+
+  <div class="cat-label">休息一下</div>
+  <div class="tool-list">
+    <a class="tool" href="https://sallys-sanguo.vercel.app" target="_blank" rel="noopener"><span class="no">No.11</span><div><h3>三國妖怪對決<span class="ext">另開分頁</span></h3><div class="desc">12 武將 × 31 妖怪的小遊戲，工作累了來打一場。</div></div><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="quote">
+  <blockquote><span class="mark">”</span>指揮 AI 的能力，<br>是這個時代業務員最划算的一筆投資。</blockquote>
+  <cite>SALLY — 莎莉行銷顧問</cite>
+</section>
+
+<footer id="join">
+  <div class="big">莎莉的 AI<br>工作<em>聰明術</em></div>
+  <p style="color:var(--ink-soft);max-width:30em;margin-top:24px">把 AI 變成業務的日常幫手。想看更多用法，來這些地方找我。</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/sally.sales.ttt" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.threads.net/@sally.sales.ttt" target="_blank" rel="noopener">脆 Threads</a>
+    <a id="cta-line" href="https://lin.ee/RuHfSIS" target="_blank" rel="noopener">LINE</a>
+  </div>
+  <div class="foot-row">
+    <small>© 2026 台東女子｜莎莉北漂中 — TAITUNG × TAIPEI</small>
+    <a class="top" href="#">回到頂部 ↑</a>
+  </div>
+</footer>
+
+<script src="assets/silk.js"></script>
+</body>
+</html>

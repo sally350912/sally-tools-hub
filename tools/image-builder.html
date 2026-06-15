@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務生圖 Prompt 產生器 — 莎莉 AI 工具室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/atelier.css">
+</head>
+<body>
+<nav><a class="logo" href="../index.html">台東女子<em>｜莎莉北漂中</em></a><a class="back" href="../index.html">← 回工具室</a></nav>
+
+<header class="tool-head">
+  <div class="crumb"><a href="../index.html">Atelier</a> — Collection — No.06</div>
+  <div class="head-row"><span class="no">No.06</span><h1>業務生圖 Prompt 產生器</h1></div>
+  <div class="meta-row"><span class="cat-tag">業務 × 客服</span><span class="status">已上線</span></div>
+  <p class="lead">選行業與圖像類型，填好視覺需求，工具自動把版權與肖像權地雷寫進 prompt。建議貼進 Adobe Firefly 或 Canva AI 等商用安全工具生圖。</p>
+</header>
+
+<section class="embed-sec">
+  <div class="embed-frame">
+    <div class="bar"><i></i><i></i><i></i><span>sally-atelier / image-builder</span></div>
+    <div class="tool-mount" id="mount"></div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="sec-label">HOW TO USE — 三步驟</div>
+  <div class="step-grid">
+    <div class="step"><div class="n">i.</div><h3>選行業＋圖類型</h3><p>社群貼文圖／產品圖卡／個人形象圖／節慶圖，工具載入對應構圖與比例。</p></div>
+    <div class="step"><div class="n">ii.</div><h3>填主視覺與品牌色</h3><p>描述主視覺、風格氛圍、品牌色，越具體越好。</p></div>
+    <div class="step"><div class="n">iii.</div><h3>貼進生圖工具</h3><p>複製 prompt 貼進 Firefly／Canva AI／ChatGPT，出圖後照清單檢查。</p></div>
+  </div>
+</section>
+
+<section class="notes"><div class="note-box"><h4>使用前請知道 NOTES</h4><ul>
+  <li>業務用＝商用，請用有商用授權的工具（Firefly、Canva Pro），別用免費版做客戶素材。</li>
+  <li>出圖後檢查：沒有真實人臉、沒有任何 Logo／商標、沒有「保證／絕對／最」字眼設計。</li>
+  <li>與實際商品或物件不符的圖不要用，避免廣告不實。</li>
+</ul></div></section>
+
+<section class="next-sec"><h2>下一件藏品</h2><div class="next-grid">
+  <a class="next-card" href="canva-sop.html"><div class="no">No.07</div><h3>Canva 業務一條龍</h3><p>生完圖，接著進 Canva 加字、發送。</p></a>
+  <a class="next-card" href="dm-builder.html"><div class="no">No.05</div><h3>業務 DM Prompt 產生器</h3><p>圖配好了，文案用同一套邏輯產出。</p></a>
+  <a class="next-card" href="chibi-maker.html"><div class="no">No.02</div><h3>Q 版角色生圖產生器</h3><p>想要有記憶點的虛擬分身？用這個。</p></a>
+</div></section>
+
+<footer><div class="foot-row"><small>© 2026 莎莉行銷顧問 SALLY MARKETING</small><a class="top" href="#">回到頂部 ↑</a></div></footer>
+
+<script src="../assets/tools.js"></script>
+<script src="../assets/silk.js"></script>
+<script>Atelier.prompt(document.getElementById('mount'), Atelier.CONFIGS.image);</script>
+</body>
+</html>

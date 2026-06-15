@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>貼文字數檢查器 — 莎莉 AI 工具室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/atelier.css">
+</head>
+<body>
+<nav><a class="logo" href="../index.html">台東女子<em>｜莎莉北漂中</em></a><a class="back" href="../index.html">← 回工具室</a></nav>
+
+<header class="tool-head">
+  <div class="crumb"><a href="../index.html">Atelier</a> — Collection — No.01</div>
+  <div class="head-row"><span class="no">No.01</span><h1>貼文字數檢查器</h1></div>
+  <div class="meta-row"><span class="cat-tag">文案內容</span><span class="status">已上線</span></div>
+  <p class="lead">貼上你的貼文，即時對照各平台的字數上限。超出會變紅，發文前先確認不會被截斷。</p>
+</header>
+
+<section class="embed-sec">
+  <div class="embed-frame">
+    <div class="bar"><i></i><i></i><i></i><span>sally-atelier / word-count</span></div>
+    <div class="tool-mount" id="mount"></div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="sec-label">HOW TO USE — 三步驟</div>
+  <div class="step-grid">
+    <div class="step"><div class="n">i.</div><h3>貼上貼文</h3><p>把你寫好的內容貼進輸入框，數字即時更新。</p></div>
+    <div class="step"><div class="n">ii.</div><h3>看哪個平台超字</h3><p>超過上限的平台會變紅並標出超出多少字。</p></div>
+    <div class="step"><div class="n">iii.</div><h3>修到綠</h3><p>調整到目標平台沒有變紅，就能安心發出。</p></div>
+  </div>
+</section>
+
+<section class="notes"><div class="note-box"><h4>使用前請知道 NOTES</h4><ul>
+  <li>字數以「字元」計算，中文一字、emoji 一個都算 1。</li>
+  <li>各平台實際計法略有差異（X 對 CJK 可能加權），這裡取通用上限當保險值。</li>
+  <li>內容只在你的瀏覽器裡計算，不上傳、不儲存。</li>
+</ul></div></section>
+
+<section class="next-sec"><h2>下一件藏品</h2><div class="next-grid">
+  <a class="next-card" href="chibi-maker.html"><div class="no">No.02</div><h3>Q 版角色生圖產生器</h3><p>配文案的角色圖，一次鎖定永遠同一個她。</p></a>
+  <a class="next-card" href="dm-builder.html"><div class="no">No.05</div><h3>業務 DM Prompt 產生器</h3><p>字數抓好了，內容讓 AI 幫你寫對。</p></a>
+</div></section>
+
+<footer><div class="foot-row"><small>© 2026 莎莉行銷顧問 SALLY MARKETING</small><a class="top" href="#">回到頂部 ↑</a></div></footer>
+
+<script src="../assets/tools.js"></script>
+<script src="../assets/silk.js"></script>
+<script>Atelier.wordCount(document.getElementById('mount'));</script>
+</body>
+</html>

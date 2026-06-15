@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>接案報價計算器 — 莎莉 AI 工具室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/atelier.css">
+</head>
+<body>
+<nav><a class="logo" href="../index.html">台東女子<em>｜莎莉北漂中</em></a><a class="back" href="../index.html">← 回工具室</a></nav>
+
+<header class="tool-head">
+  <div class="crumb"><a href="../index.html">Atelier</a> — Collection — No.04</div>
+  <div class="head-row"><span class="no">No.04</span><h1>接案報價計算器</h1></div>
+  <div class="meta-row"><span class="cat-tag">接案報價</span><span class="status">已上線</span></div>
+  <p class="lead">填入工作項目與工時，自動算出報價，並產出一段可複製的報價說明，直接貼給客戶。</p>
+</header>
+
+<section class="embed-sec">
+  <div class="embed-frame">
+    <div class="bar"><i></i><i></i><i></i><span>sally-atelier / quote-calc</span></div>
+    <div class="tool-mount" id="mount"></div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="sec-label">HOW TO USE — 三步驟</div>
+  <div class="step-grid">
+    <div class="step"><div class="n">i.</div><h3>設定時薪</h3><p>把時薪設成「想要的月收入 ÷ 可工作時數」，報價才不會做白工。</p></div>
+    <div class="step"><div class="n">ii.</div><h3>填項目與工時</h3><p>逐項列出工作與預估工時，需要時加急件加成與其他費用。</p></div>
+    <div class="step"><div class="n">iii.</div><h3>複製報價說明</h3><p>下方自動產出格式化說明，一鍵複製寄給客戶。</p></div>
+  </div>
+</section>
+
+<section class="notes"><div class="note-box"><h4>使用前請知道 NOTES</h4><ul>
+  <li>本工具產出的報價未稅，實際開立發票請另計稅額。</li>
+  <li>報價說明附 14 天有效期，可自行在複製後調整。</li>
+  <li>所有數字只在你的瀏覽器計算，不上傳、不儲存。</li>
+</ul></div></section>
+
+<section class="next-sec"><h2>下一件藏品</h2><div class="next-grid">
+  <a class="next-card" href="dm-builder.html"><div class="no">No.05</div><h3>業務 DM Prompt 產生器</h3><p>報價談好了，後續聯繫的訊息讓 AI 幫你寫。</p></a>
+  <a class="next-card" href="https://dev-letter-tool.vercel.app" target="_blank" rel="noopener"><div class="no">No.08</div><h3>業務開發信產生器</h3><p>找新客戶？產出開發信＋ Word 模板。</p></a>
+</div></section>
+
+<footer><div class="foot-row"><small>© 2026 莎莉行銷顧問 SALLY MARKETING</small><a class="top" href="#">回到頂部 ↑</a></div></footer>
+
+<script src="../assets/tools.js"></script>
+<script src="../assets/silk.js"></script>
+<script>Atelier.quote(document.getElementById('mount'));</script>
+</body>
+</html>
