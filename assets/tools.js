@@ -85,13 +85,10 @@ window.Atelier = (function(){
 
   /* ---------- 決策轉盤 ---------- */
   function wheel(el){
-    el.innerHTML = `<label class="field"><span class="lab">選項（一行一個）</span><textarea id="wh-in" style="min-height:130px">看 Netflix 放空
-出門走走
-讀那本買很久的書
-睡個回籠覺
-找朋友聊天
-動手做工具室的新工具</textarea></label>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:6px">
+    el.innerHTML = `<span class="lab" style="display:block;margin-bottom:8px">選項（每個一格，2 個以上就能轉）</span>
+      <div id="wh-rows"></div>
+      <button class="t-btn sec" id="wh-add" style="margin:2px 0 4px">＋ 加一個選項</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:16px">
         <div style="position:relative;width:300px;max-width:82vw;aspect-ratio:1">
           <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);z-index:2;font-size:28px;color:var(--ocean);line-height:1">▼</div>
           <canvas id="wh-cv" width="600" height="600" style="width:100%;height:100%;display:block"></canvas>
@@ -100,10 +97,17 @@ window.Atelier = (function(){
         <div id="wh-res" style="font-family:var(--brush);font-size:1.5rem;color:var(--ocean);min-height:1.6em;text-align:center"></div>
       </div>
       <div class="t-note">把「想太多」變成「先動再說」。轉到哪就先做那個，不甘心再轉一次也行。</div>`;
-    const cv=el.querySelector('#wh-cv'), ctx=cv.getContext('2d');
-    const COLORS=['#E8845A','#CF6A40','#EFB890','#D98B5F','#F3C9A8','#C56A40'];
+    const cv=el.querySelector('#wh-cv'), ctx=cv.getContext('2d'), rowsWrap=el.querySelector('#wh-rows');
+    const COLORS=['#E8845A','#D9A441','#8FA07E','#6E8CA0','#C77B6B','#B5894E','#A88FB0','#E0A878'];
     let opts=[], rot=0, spinning=false;
-    const readOpts=()=>{ opts=el.querySelector('#wh-in').value.split('\n').map(s=>s.trim()).filter(Boolean); };
+    const readOpts=()=>{ opts=[...rowsWrap.querySelectorAll('input')].map(i=>i.value.trim()).filter(Boolean); };
+    function addRow(val=''){
+      const d=document.createElement('div'); d.style.cssText='display:flex;gap:8px;margin-bottom:8px';
+      d.innerHTML=`<input type="text" placeholder="輸入一個選項" value="${String(val).replace(/"/g,'&quot;')}" style="flex:1"><button class="t-btn sec" title="刪除" style="flex:0 0 auto;padding:9px 13px">✕</button>`;
+      d.querySelector('input').addEventListener('input',()=>{ readOpts(); draw(); });
+      d.querySelector('button').onclick=()=>{ d.remove(); readOpts(); draw(); };
+      rowsWrap.appendChild(d);
+    }
     function draw(){
       ctx.clearRect(0,0,600,600); const n=opts.length; if(!n) return;
       const cx=300, cy=300, r=288, seg=Math.PI*2/n;
@@ -133,7 +137,8 @@ window.Atelier = (function(){
         if(p<1) requestAnimationFrame(f); else { spinning=false; result(); } })(t0);
     }
     el.querySelector('#wh-go').onclick=spin;
-    el.querySelector('#wh-in').addEventListener('input',()=>{ readOpts(); draw(); });
+    el.querySelector('#wh-add').onclick=()=>addRow('');
+    ['看 Netflix 放空','出門走走','讀那本買很久的書','睡個回籠覺','找朋友聊天','動手做工具室的新工具'].forEach(addRow);
     readOpts(); draw();
   }
 
