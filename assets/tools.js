@@ -197,6 +197,43 @@ window.Atelier = (function(){
     render();
   }
 
+  /* ---------- 生命靈數 × 溝通對應 ---------- */
+  function numerology(el){
+    const D={
+      '1':{t:'領導者',d:'獨立、有主見、目標導向，喜歡主導。',talk:'講重點、給選項讓他自己拍板，讓他覺得決定是他做的。',no:'別囉嗦、別替他做主。'},
+      '2':{t:'協調者',d:'敏感、重感受與關係，不愛衝突。',talk:'溫和、耐心、多傾聽，給足安全感再慢慢推進。',no:'別逼、別給壓力。'},
+      '3':{t:'表達者',d:'活潑、愛分享、靠感覺決定。',talk:'氣氛輕鬆有趣，給他舞台講、多真心稱讚。',no:'別太嚴肅、別潑冷水。'},
+      '4':{t:'實務者',d:'務實、重細節、要看到證據。',talk:'有條理、給數據與步驟、說到做到。',no:'別空談、別臨時改規則。'},
+      '5':{t:'自由者',d:'愛變化與新鮮、討厭被綁住。',talk:'給彈性與選擇、節奏明快講重點。',no:'別一堆規則、別逼他承諾。'},
+      '6':{t:'照顧者',d:'重家庭與責任，看重信任與值得。',talk:'真誠、顧及他在乎的人、強調保障與安心。',no:'別只談自己、別誇大。'},
+      '7':{t:'思考者',d:'理性、愛研究、需要空間。',talk:'給資料讓他自己判斷、尊重他的步調。',no:'別硬推、別過度熱情。'},
+      '8':{t:'實現者',d:'重成就與效率，看結果與回報。',talk:'專業、直接談價值與投報、尊重他的地位與時間。',no:'別拖泥帶水、別佔用他時間。'},
+      '9':{t:'理想者',d:'重意義與大局，有人文關懷。',talk:'談願景、價值與對別人的幫助。',no:'別只談錢、別太現實。'},
+      '11':{t:'啟發者',d:'直覺強、敏感、理想高。',talk:'真誠有深度、給他靈感與認同。',no:'別敷衍、別只講表面。'},
+      '22':{t:'大建築師',d:'格局大又務實，能把理想落地。',talk:'談長遠藍圖＋具體做法，兩個都要給。',no:'別小家子氣、別只看眼前。'},
+      '33':{t:'大導師',d:'溫暖、奉獻，重愛與教育。',talk:'強調對人的幫助與成長、用溫度溝通。',no:'別太功利、別冷冰冰。'}
+    };
+    el.innerHTML=`<label class="field"><span class="lab">輸入生日</span><input type="date" id="nm-date" min="1900-01-01" max="2026-12-31"></label>
+      <div class="t-row" style="margin-top:0"><button class="t-btn" id="nm-go">算我的生命靈數</button></div>
+      <div id="nm-res" style="margin-top:18px"></div>
+      <div class="t-note">生命靈數＝把生日數字一路加總到個位數（11／22／33 為大師數保留）。溝通建議當參考，真人還是要看實際互動 🙂</div>`;
+    function calc(ds){ let s=ds.replace(/\D/g,'').split('').reduce((a,b)=>a+ +b,0);
+      while(s>9 && ![11,22,33].includes(s)) s=String(s).split('').reduce((a,b)=>a+ +b,0); return s; }
+    function show(n){
+      const o=D[String(n)]; if(!o) return;
+      el.querySelector('#nm-res').innerHTML=`
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="font-family:var(--brush);font-size:3.6rem;color:var(--ocean);line-height:1">${n}</div>
+          <div style="font-family:var(--brush);font-size:1.5rem;margin-top:4px">${o.t}</div>
+        </div>
+        <p style="margin:0 0 14px;color:var(--ink-soft);text-align:center">${o.d}</p>
+        <div class="t-out" style="white-space:normal;line-height:1.9">✅ <b style="color:var(--ocean)">跟這種人溝通這樣做</b><br>${o.talk}<br><br>⚠️ <b style="color:var(--ocean)">地雷</b><br>${o.no}</div>
+        <div class="t-row"><button class="t-btn sec" id="nm-copy">複製結果</button></div>`;
+      el.querySelector('#nm-copy').onclick=()=>copy(`🔢 生命靈數 ${n}｜${o.t}\n${o.d}\n\n✅ 溝通這樣做：${o.talk}\n⚠️ 地雷：${o.no}`);
+    }
+    el.querySelector('#nm-go').onclick=()=>{ const v=el.querySelector('#nm-date').value; if(!v){ toast('先選生日'); return; } show(calc(v)); };
+  }
+
   /* ---------- Prompt 工具設定（port 自 Notion 業務 AI 工具包）---------- */
   const CONFIGS = {
     dm:{ fields:[
@@ -250,5 +287,5 @@ window.Atelier = (function(){
     },
   };
 
-  return { wordCount, quote, prompt, wheel, itinerary, CONFIGS, copy, toast };
+  return { wordCount, quote, prompt, wheel, itinerary, numerology, CONFIGS, copy, toast };
 })();
