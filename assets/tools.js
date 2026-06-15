@@ -142,6 +142,61 @@ window.Atelier = (function(){
     readOpts(); draw();
   }
 
+  /* ---------- 行程規劃分享器 ---------- */
+  function itinerary(el){
+    const esc=s=>String(s).replace(/"/g,'&quot;');
+    el.innerHTML = `<label class="field"><span class="lab">行程標題</span><input type="text" id="it-title" value="今天的行程"></label>
+      <span class="lab" style="display:block;margin-bottom:8px">行程項目（時間＋內容；內容可直接貼網址：地圖、訂位、報名連結）</span>
+      <div id="it-rows"></div>
+      <div class="t-row" style="margin-top:0">
+        <button class="t-btn sec" id="it-add">＋ 加一行</button>
+        <button class="t-btn sec" id="it-sort">⏱ 依時間排序</button>
+      </div>
+      <label class="field" style="margin-top:18px"><span class="lab">預覽（可複製貼到 LINE）</span><div class="t-out" id="it-out"></div></label>
+      <div class="t-row"><button class="t-btn" id="it-copy">複製成 LINE 備忘錄</button></div>
+      <div class="t-note">用 ↑ ↓ 調整順序、✕ 刪除；按「依時間排序」自動由早到晚排好。整理好的文字直接貼進 LINE 就是一張行程備忘錄。</div>`;
+    const rows=el.querySelector('#it-rows');
+    function addRow(t='',c=''){
+      const d=document.createElement('div'); d.className='it-row'; d.style.cssText='display:flex;gap:6px;margin-bottom:8px;align-items:center';
+      d.innerHTML=`<input type="text" class="it-t" placeholder="09:00" value="${esc(t)}" style="flex:0 0 74px;text-align:center">
+        <input type="text" class="it-c" placeholder="活動／地點／網址" value="${esc(c)}" style="flex:1">
+        <button class="t-btn sec it-up" title="上移" style="flex:0 0 auto;padding:8px 10px">↑</button>
+        <button class="t-btn sec it-dn" title="下移" style="flex:0 0 auto;padding:8px 10px">↓</button>
+        <button class="t-btn sec it-del" title="刪除" style="flex:0 0 auto;padding:8px 10px">✕</button>`;
+      d.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));
+      d.querySelector('.it-up').onclick=()=>{ const p=d.previousElementSibling; if(p) rows.insertBefore(d,p); render(); };
+      d.querySelector('.it-dn').onclick=()=>{ const n=d.nextElementSibling; if(n) rows.insertBefore(n,d); render(); };
+      d.querySelector('.it-del').onclick=()=>{ d.remove(); render(); };
+      rows.appendChild(d);
+    }
+    const data=()=>[...rows.querySelectorAll('.it-row')].map(r=>({t:r.querySelector('.it-t').value.trim(),c:r.querySelector('.it-c').value.trim()})).filter(x=>x.t||x.c);
+    function build(){
+      const title=el.querySelector('#it-title').value.trim()||'今天的行程';
+      const items=data(); let out='📅 '+title+'\n━━━━━━━━━━━\n';
+      if(!items.length){ out+='（還沒有項目）\n'; }
+      items.forEach(x=>{
+        const isUrl=/^https?:\/\//i.test(x.c);
+        if(x.t&&x.c){ out+= isUrl ? ('🕒 '+x.t+'\n　🔗 '+x.c+'\n') : ('🕒 '+x.t+'　'+x.c+'\n'); }
+        else if(x.t){ out+='🕒 '+x.t+'\n'; }
+        else { out+= isUrl ? ('🔗 '+x.c+'\n') : ('・'+x.c+'\n'); }
+      });
+      out+='━━━━━━━━━━━\nby 莎莉的 AI 工具室';
+      return out;
+    }
+    function render(){ el.querySelector('#it-out').textContent=build(); }
+    function sortByTime(){
+      const arr=[...rows.querySelectorAll('.it-row')];
+      arr.sort((a,b)=>(a.querySelector('.it-t').value.trim()||'99:99').localeCompare(b.querySelector('.it-t').value.trim()||'99:99'));
+      arr.forEach(r=>rows.appendChild(r)); render();
+    }
+    el.querySelector('#it-add').onclick=()=>addRow();
+    el.querySelector('#it-sort').onclick=sortByTime;
+    el.querySelector('#it-title').addEventListener('input',render);
+    el.querySelector('#it-copy').onclick=()=>{ if(data().length){ copy(build()); } else toast('先加幾個行程'); };
+    [['09:00','晨間規劃，挑今天最重要的一件事'],['10:30','拜訪／聯繫客戶'],['12:30','午餐＋休息'],['14:00','回訊息、出報價'],['19:30','發一則貼文']].forEach(p=>addRow(p[0],p[1]));
+    render();
+  }
+
   /* ---------- Prompt 工具設定（port 自 Notion 業務 AI 工具包）---------- */
   const CONFIGS = {
     dm:{ fields:[
@@ -195,5 +250,5 @@ window.Atelier = (function(){
     },
   };
 
-  return { wordCount, quote, prompt, wheel, CONFIGS, copy, toast };
+  return { wordCount, quote, prompt, wheel, itinerary, CONFIGS, copy, toast };
 })();

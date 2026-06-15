@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行程規劃分享器 — 莎莉 AI 工具室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/atelier.css">
+</head>
+<body>
+<nav><a class="logo" href="../index.html">台東女子<em>｜莎莉北漂中</em></a><a class="back" href="../index.html">← 回工具室</a></nav>
+
+<header class="tool-head">
+  <div class="crumb"><a href="../index.html">Atelier</a> — Collection — No.15</div>
+  <div class="head-row"><span class="no">No.15</span><h1>行程規劃分享器</h1></div>
+  <div class="meta-row"><span class="cat-tag">效率小幫手</span><span class="status">已上線</span></div>
+  <p class="lead">把今天的行程一行一行打進去，用 ↑↓ 排順序，內容可以直接貼地圖或訂位網址。整理好就變成一張可以貼到 LINE 的行程備忘錄。</p>
+</header>
+
+<section class="embed-sec">
+  <div class="embed-frame">
+    <div class="bar"><i></i><i></i><i></i><span>itinerary</span></div>
+    <div class="tool-mount" id="mount"></div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="sec-label">HOW TO USE — 三步驟</div>
+  <div class="step-grid">
+    <div class="step"><div class="n">i.</div><h3>填時間與內容</h3><p>一行一個項目，內容可以是活動、地點，或直接貼網址。</p></div>
+    <div class="step"><div class="n">ii.</div><h3>排順序</h3><p>用 ↑↓ 手動調，或按「依時間排序」自動由早到晚排好。</p></div>
+    <div class="step"><div class="n">iii.</div><h3>複製貼 LINE</h3><p>下方預覽就是整理好的備忘錄，一鍵複製貼進 LINE 分享。</p></div>
+  </div>
+</section>
+
+<section class="notes"><div class="note-box"><h4>使用前請知道 NOTES</h4><ul>
+  <li>內容貼網址（http 開頭）會自動換行加上 🔗，看起來更清楚。</li>
+  <li>「依時間排序」是用文字比對，時間請用 24 小時制（例如 09:00、14:30）才會排得準。</li>
+  <li>全部在你的瀏覽器裡跑，不上傳、不儲存。</li>
+</ul></div></section>
+
+<section class="next-sec"><h2>下一件藏品</h2><div class="next-grid">
+  <a class="next-card" href="decision-wheel.html"><div class="no">No.14</div><h3>決策轉盤</h3><p>排不出順序？先讓轉盤幫你決定第一件。</p></a>
+  <a class="next-card" href="quote-calc.html"><div class="no">No.04</div><h3>接案報價計算器</h3><p>行程裡有報價工作？順手算一下。</p></a>
+  <a class="next-card" href="word-count.html"><div class="no">No.01</div><h3>貼文字數檢查器</h3><p>行程裡要發文？先量字數。</p></a>
+</div></section>
+
+<footer><div class="foot-row"><small>© 2026 莎莉行銷顧問 SALLY MARKETING</small><a class="top" href="#">回到頂部 ↑</a></div></footer>
+
+<script src="../assets/tools.js"></script>
+<script src="../assets/silk.js"></script>
+<script>Atelier.itinerary(document.getElementById('mount'));</script>
+</body>
+</html>
