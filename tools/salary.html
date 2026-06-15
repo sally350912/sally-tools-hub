@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務薪資與獎金試算 — 莎莉 AI 工具室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/atelier.css">
+<style>
+  .salary-frame{width:100%;border:0;display:block;min-height:600px;background:#FBF7F1}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="../index.html">台東女子<em>｜莎莉北漂中</em></a><a class="back" href="../index.html">← 回工具室</a></nav>
+
+<header class="tool-head">
+  <div class="crumb"><a href="../index.html">Atelier</a> — Collection — No.12</div>
+  <div class="head-row"><span class="no">No.12</span><h1>業務薪資與獎金試算</h1></div>
+  <div class="meta-row"><span class="cat-tag">報價・薪酬</span><span class="status">已上線</span></div>
+  <p class="lead">輸入底薪、加班時數、業績與獎金級距，依勞基法一鍵算出本月實領，還能複製明細或下載薪資單 PNG。</p>
+</header>
+
+<section class="embed-sec">
+  <div class="embed-frame">
+    <div class="bar"><i></i><i></i><i></i><span>sally-atelier / salary</span></div>
+    <iframe id="salary" class="salary-frame" src="salary-app.html" title="業務薪資計算機" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="sec-label">HOW TO USE — 三步驟</div>
+  <div class="step-grid">
+    <div class="step"><div class="n">i.</div><h3>填底薪與加班</h3><p>輸入月底薪、工作天數，與平日／休息日／國定假日的加班時數。</p></div>
+    <div class="step"><div class="n">ii.</div><h3>帶入業績獎金</h3><p>填業績目標與實際業績，依級距自動算出對應獎金，帶進佣金欄。</p></div>
+    <div class="step"><div class="n">iii.</div><h3>看實領、存下來</h3><p>下方算出本月實領，可複製明細貼 LINE，或下載薪資單 PNG。</p></div>
+  </div>
+</section>
+
+<section class="notes"><div class="note-box"><h4>使用前請知道 NOTES</h4><ul>
+  <li>結果僅供參考，實際以勞動部公告與公司規定為準。</li>
+  <li>勞健保留空會用投保級距自動估算（員工負擔，不含眷屬）。</li>
+  <li>加班倍率依勞基法 §24、§39；獎金級距是範例設定，可依自己公司調整。</li>
+  <li>所有數字只在你的瀏覽器計算，不上傳、不儲存。</li>
+</ul></div></section>
+
+<section class="next-sec"><h2>下一件藏品</h2><div class="next-grid">
+  <a class="next-card" href="quote-calc.html"><div class="no">No.04</div><h3>接案報價計算器</h3><p>接案估價？換這個算工時報價。</p></a>
+  <a class="next-card" href="dm-builder.html"><div class="no">No.05</div><h3>業務 DM Prompt 產生器</h3><p>算完薪水，回去衝業績的訊息讓 AI 寫。</p></a>
+</div></section>
+
+<footer><div class="foot-row"><small>© 2026 莎莉行銷顧問 SALLY MARKETING</small><a class="top" href="#">回到頂部 ↑</a></div></footer>
+
+<script src="../assets/silk.js"></script>
+<script>
+  // 同源 iframe 自動撐高，免內部捲動
+  const ifr = document.getElementById('salary');
+  function fit(){ try{ const d=ifr.contentWindow.document; const h=Math.max(d.body.scrollHeight,d.documentElement.scrollHeight); ifr.style.height=(h+24)+'px'; }catch(e){} }
+  ifr.addEventListener('load', ()=>{ fit();
+    try{ const ro=new ResizeObserver(fit); ro.observe(ifr.contentWindow.document.body);
+      ifr.contentWindow.document.addEventListener('input', ()=>setTimeout(fit,60)); }catch(e){}
+    setTimeout(fit,300); setTimeout(fit,900);
+  });
+</script>
+</body>
+</html>
