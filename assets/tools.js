@@ -180,7 +180,7 @@ window.Atelier = (function(){
         else if(x.t){ out+='🕒 '+x.t+'\n'; }
         else { out+= isUrl ? ('🔗 '+x.c+'\n') : ('・'+x.c+'\n'); }
       });
-      out+='━━━━━━━━━━━\nby 莎莉的 AI 工具室';
+      out+='━━━━━━━━━━━';
       return out;
     }
     function render(){ el.querySelector('#it-out').textContent=build(); }
