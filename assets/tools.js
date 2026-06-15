@@ -83,6 +83,60 @@ window.Atelier = (function(){
     build();
   }
 
+  /* ---------- 決策轉盤 ---------- */
+  function wheel(el){
+    el.innerHTML = `<label class="field"><span class="lab">選項（一行一個）</span><textarea id="wh-in" style="min-height:130px">看 Netflix 放空
+出門走走
+讀那本買很久的書
+睡個回籠覺
+找朋友聊天
+動手做工具室的新工具</textarea></label>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:6px">
+        <div style="position:relative;width:300px;max-width:82vw;aspect-ratio:1">
+          <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);z-index:2;font-size:28px;color:var(--ocean);line-height:1">▼</div>
+          <canvas id="wh-cv" width="600" height="600" style="width:100%;height:100%;display:block"></canvas>
+        </div>
+        <button class="t-btn" id="wh-go">轉一下 🎯</button>
+        <div id="wh-res" style="font-family:var(--brush);font-size:1.5rem;color:var(--ocean);min-height:1.6em;text-align:center"></div>
+      </div>
+      <div class="t-note">把「想太多」變成「先動再說」。轉到哪就先做那個，不甘心再轉一次也行。</div>`;
+    const cv=el.querySelector('#wh-cv'), ctx=cv.getContext('2d');
+    const COLORS=['#E8845A','#CF6A40','#EFB890','#D98B5F','#F3C9A8','#C56A40'];
+    let opts=[], rot=0, spinning=false;
+    const readOpts=()=>{ opts=el.querySelector('#wh-in').value.split('\n').map(s=>s.trim()).filter(Boolean); };
+    function draw(){
+      ctx.clearRect(0,0,600,600); const n=opts.length; if(!n) return;
+      const cx=300, cy=300, r=288, seg=Math.PI*2/n;
+      for(let i=0;i<n;i++){
+        const a0=rot+i*seg;
+        ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,a0,a0+seg); ctx.closePath();
+        ctx.fillStyle=COLORS[i%COLORS.length]; ctx.fill();
+        ctx.strokeStyle='#FBF7F1'; ctx.lineWidth=3; ctx.stroke();
+        ctx.save(); ctx.translate(cx,cy); ctx.rotate(a0+seg/2);
+        ctx.textAlign='right'; ctx.fillStyle='#2B2622'; ctx.font='600 22px "Noto Sans TC",sans-serif';
+        const t=opts[i].length>11?opts[i].slice(0,11)+'…':opts[i];
+        ctx.fillText(t, r-20, 8); ctx.restore();
+      }
+      ctx.beginPath(); ctx.arc(cx,cy,36,0,Math.PI*2); ctx.fillStyle='#FBF7F1'; ctx.fill();
+      ctx.strokeStyle='#E8845A'; ctx.lineWidth=4; ctx.stroke();
+    }
+    function result(){
+      const n=opts.length, seg=Math.PI*2/n; let a=(-Math.PI/2-rot)%(Math.PI*2); if(a<0)a+=Math.PI*2;
+      el.querySelector('#wh-res').textContent='→ '+opts[Math.floor(a/seg)%n];
+    }
+    function spin(){
+      readOpts(); if(opts.length<2){ toast('至少給 2 個選項'); return; } if(spinning) return;
+      spinning=true; el.querySelector('#wh-res').textContent='';
+      const dur=3400+Math.random()*900, t0=performance.now(), from=rot, to=from+(5+Math.random()*3)*Math.PI*2;
+      const ease=t=>1-Math.pow(1-t,3);
+      (function f(now){ const p=Math.min(1,(now-t0)/dur); rot=from+(to-from)*ease(p); draw();
+        if(p<1) requestAnimationFrame(f); else { spinning=false; result(); } })(t0);
+    }
+    el.querySelector('#wh-go').onclick=spin;
+    el.querySelector('#wh-in').addEventListener('input',()=>{ readOpts(); draw(); });
+    readOpts(); draw();
+  }
+
   /* ---------- Prompt 工具設定（port 自 Notion 業務 AI 工具包）---------- */
   const CONFIGS = {
     dm:{ fields:[
@@ -136,5 +190,5 @@ window.Atelier = (function(){
     },
   };
 
-  return { wordCount, quote, prompt, CONFIGS, copy, toast };
+  return { wordCount, quote, prompt, wheel, CONFIGS, copy, toast };
 })();
