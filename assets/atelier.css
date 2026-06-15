@@ -129,7 +129,8 @@ footer .top:hover{color:var(--ocean)}
 .embed-frame{border:1px solid var(--line);background:#fff;box-shadow:0 24px 60px rgba(43,42,38,.07)}
 .embed-frame .bar{display:flex;align-items:center;gap:9px;padding:13px 20px;border-bottom:1px solid var(--line);background:var(--cream-deep)}
 .embed-frame .bar i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line)}
-.embed-frame .bar span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--ink-soft);margin-left:8px}
+.embed-frame .bar{overflow:hidden}
+.embed-frame .bar span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--ink-soft);margin-left:8px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tool-mount{padding:34px 32px}
 @media(max-width:640px){.tool-mount{padding:24px 18px}}
 
